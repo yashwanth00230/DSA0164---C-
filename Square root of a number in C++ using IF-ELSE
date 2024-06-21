@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std;
+int main() {
+    int num;
+    cout << "Enter a number: ";
+    cin >> num;
+    if (num < 0) {
+        cout << "Square root of a negative number is not defined in real numbers." << endl;
+        return 1;
+    }
+    int sqrt = 0;
+    while (sqrt * sqrt <= num) {
+        if (sqrt * sqrt == num) {
+            cout << "The square root of " << num << " is " << sqrt << endl;
+            return 0;
+        }
+        sqrt++;
+    }
+    cout << "The number " << num << " is not a perfect square." << endl;
+    return 0;
+}
+
+
+OUTPUT:-
+Enter a number: 25
+The square root of 25 is 5
