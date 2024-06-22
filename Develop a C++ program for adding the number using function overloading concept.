@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+int add(int a, int b) {
+    return a + b;
+}
+double add(double a, double b) {
+    return a + b;
+}
+int add(int a, int b, int c) {
+    return a + b + c;
+}
+int main() {
+    int int1 = 5, int2 = 10, int3 = 20;
+    double double1 = 5.5, double2 = 10.5;
+    cout << "Sum of " << int1 << " and " << int2 << " is: " << add(int1, int2) << endl;
+    cout << "Sum of " << double1 << " and " << double2 << " is: " << add(double1, double2) << endl;
+    cout << "Sum of " << int1 << ", " << int2 << ", and " << int3 << " is: " << add(int1, int2, int3) << endl;
+    return 0;
+}
+
+
+OUTPUT:-
+Sum of 5 and 10 is: 15
+Sum of 5.5 and 10.5 is: 16
+Sum of 5, 10, and 20 is: 35
