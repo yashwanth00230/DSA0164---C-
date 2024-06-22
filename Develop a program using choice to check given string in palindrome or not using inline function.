@@ -1,0 +1,25 @@
+#include <iostream>
+#include <algorithm>
+using namespace std;
+inline bool isPalindrome(const string &str) {
+    return equal(str.begin(), str.begin() + str.size() / 2, str.rbegin());
+}
+int main() {
+    string inputString, choice;
+    do {
+        cout << "Enter a string to check if it is a palindrome: ";
+        cin >> inputString;
+        transform(inputString.begin(), inputString.end(), inputString.begin(), ::tolower);
+        cout << "The string \"" << inputString << "\" is " 
+             << (isPalindrome(inputString) ? "" : "not ") << "a palindrome." << endl;
+        cout << "Do you want to check another string? (yes/no): ";
+        cin >> choice;
+        transform(choice.begin(), choice.end(), choice.begin(), ::tolower);
+    } while (choice == "yes");
+    return 0;
+}
+
+
+OUTPUT:-
+Enter a string to check if it is a palindrome: 12321
+The string "12321" is a palindrome.
