@@ -1,0 +1,33 @@
+#include <iostream>
+using namespace std;
+class Counter {
+private:
+    static int count; 
+    int id;          
+public:
+    Counter() {
+        id = ++count; 
+    }
+    void display() {
+        cout << "Object ID: " << id << endl;
+    }
+    static void showCount() {
+        cout << "Total number of objects created: " << count << endl;
+    }
+};
+int Counter::count = 0;
+int main() {
+    Counter obj1, obj2, obj3;
+    obj1.display();
+    obj2.display();
+    obj3.display();
+    Counter::showCount();
+    return 0;
+}
+
+
+OUTPUT:-
+Object ID: 1
+Object ID: 2
+Object ID: 3
+Total number of objects created: 3
