@@ -1,0 +1,33 @@
+#include <iostream>
+using namespace std;
+class Box {
+public:
+    double length;
+    Box(double len) : length(len), width(0.0) {} 
+    void setWidth(double wid) {
+        width = wid;
+    }
+    double getWidth() {
+        return width;
+    }
+    void displayDimensions() {
+        cout << "Length: " << length << " units" << endl;
+        cout << "Width: " << width << " units" << endl;
+    }
+private:
+    double width;
+};
+int main() {
+    Box box1(10.0); 
+    box1.setWidth(5.0);
+    double boxWidth = box1.getWidth();
+    cout << "Box 1 Dimensions:" << endl;
+    box1.displayDimensions();
+    return 0;
+}
+
+
+OUTPUT:-
+Box 1 Dimensions:
+Length: 10 units
+Width: 5 units
