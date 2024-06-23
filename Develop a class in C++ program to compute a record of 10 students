@@ -1,0 +1,57 @@
+#include <iostream>
+#include <string>
+using namespace std;
+class Student {
+private:
+    string name;
+    string regno;
+    float mark1, mark2, mark3, average;
+    char grade;
+public:
+    void input() {
+        cout << "Enter Name: ";
+        cin >> name;
+        cout << "Enter Registration Number: ";
+        cin >> regno;
+        cout << "Enter Marks for 3 Subjects: ";
+        cin >> mark1 >> mark2 >> mark3;
+        calculateAverageAndGrade();
+    }
+    void calculateAverageAndGrade() {
+        average = (mark1 + mark2 + mark3) / 3;
+        if (average > 90)
+            grade = 'S';
+        else if (average > 80)
+            grade = 'A';
+        else if (average > 70)
+            grade = 'B';
+        else if (average > 60)
+            grade = 'C';
+        else if (average > 50)
+            grade = 'D';
+        else
+            grade = 'F';
+    }
+    void show() const {
+        cout << "Name: " << name << endl;
+        cout << "Registration Number: " << regno << endl;
+        cout << "Marks: " << mark1 << ", " << mark2 << ", " << mark3 << endl;
+        cout << "Average: " << average << endl;
+        cout << "Grade: " << grade << endl;
+    }
+};
+int main() {
+    const int numStudents = 10;
+    Student students[numStudents];
+    for (int i = 0; i < numStudents; ++i) {
+        cout << "Enter details for student " << i + 1 << endl;
+        students[i].input();
+        cout << endl;
+    }
+    for (int i = 0; i < numStudents; ++i) {
+        cout << "Details of student " << i + 1 << endl;
+        students[i].show();
+        cout << endl;
+    }
+    return 0;
+}
