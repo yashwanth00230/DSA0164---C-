@@ -1,0 +1,32 @@
+#include <iostream>
+using namespace std;
+class Add {
+public:
+    Add(double value = 0) : value(value) {}
+    Add operator+(const Add& other) const {
+        return Add(value + other.value);
+    }
+    void display() const {
+        cout << "Value: " << value << endl;
+    }
+private:
+    double value;
+};
+int main() {
+    Add num1(10.5);  
+    Add num2(25.3);   
+    Add sum = num1 + num2;   
+    cout << "Num1: ";
+    num1.display();
+    cout << "Num2: ";
+    num2.display();
+    cout << "Sum: ";
+    sum.display();
+    return 0;
+}
+
+
+OUTPUT:-
+Num1: Value: 10.5
+Num2: Value: 25.3
+Sum: Value: 35.8
