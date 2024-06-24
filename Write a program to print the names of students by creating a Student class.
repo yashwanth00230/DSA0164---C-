@@ -1,0 +1,27 @@
+#include <iostream>
+#include <string>
+using namespace std;
+class Student {
+public:
+    Student(const string& name = "Unknown");
+    void printName() const;
+private:
+    string name;
+};
+Student::Student(const string& name) : name(name) {
+}
+void Student::printName() const {
+    cout << "Student's name: " << name << endl;
+}
+int main() {
+    Student student1("Alice");
+    Student student2;
+    student1.printName();  
+    student2.printName();  
+    return 0;
+}
+
+
+OUTPUT:-
+Student's name: Alice
+Student's name: Unknown
