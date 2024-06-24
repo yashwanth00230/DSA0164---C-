@@ -1,0 +1,28 @@
+#include <iostream>
+class CubeCalculator {
+private:
+    int number;
+public:
+    CubeCalculator() : number(0) {}
+    CubeCalculator(int num) : number(num) {}
+    void displayCubes() {
+        for (int i = 1; i <= number; ++i) {
+            std::cout << "Cube of " << i << " is " << (i * i * i) << std::endl;
+        }
+    }
+};
+int main() {
+    int n;
+    std::cout << "Enter an integer: ";
+    std::cin >> n;
+    CubeCalculator calculator(n);
+    calculator.displayCubes();
+    return 0;
+}
+
+
+OUTPUT:-
+Enter an integer: 3
+Cube of 1 is 1
+Cube of 2 is 8
+Cube of 3 is 27
