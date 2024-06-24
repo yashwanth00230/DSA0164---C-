@@ -1,0 +1,33 @@
+#include <iostream>
+class RightAngleTriangle {
+private:
+    int rows;
+public:
+    RightAngleTriangle() : rows(0) {}
+    RightAngleTriangle(int num) : rows(num) {}
+    void printPattern() {
+        for (int i = 1; i <= rows; ++i) {
+            for (int j = 1; j <= i; ++j) {
+                std::cout << i << " ";
+            }
+            std::cout << std::endl;
+        }
+    }
+};
+int main() {
+    int n;
+    std::cout << "Enter the number of rows for the right-angle triangle: ";
+    std::cin >> n;
+    RightAngleTriangle triangle(n);
+    triangle.printPattern();
+    return 0;
+}
+
+
+OUTPUT:-
+Enter the number of rows for the right-angle triangle: 5
+1 
+2 2 
+3 3 3 
+4 4 4 4 
+5 5 5 5 5 
