@@ -1,0 +1,38 @@
+#include <iostream>
+#include <cmath>
+class VolumeCalculator {
+private:
+    double volume;
+public:
+    VolumeCalculator() : volume(0) {}
+    VolumeCalculator(double side) {
+        volume = side * side * side;
+    }
+    VolumeCalculator(double radius, double height) {
+        volume = M_PI * radius * radius * height;
+    }
+    void displayVolume() const {
+        std::cout << "Volume: " << volume << std::endl;
+    }
+};
+int main() {
+    double side, radius, height;
+    std::cout << "Enter the side length of the cube: ";
+    std::cin >> side;
+    VolumeCalculator cube(side);
+    std::cout << "Cube ";
+    cube.displayVolume();
+    std::cout << "Enter the radius and height of the cylinder: ";
+    std::cin >> radius >> height;
+    VolumeCalculator cylinder(radius, height);
+    std::cout << "Cylinder ";
+    cylinder.displayVolume();
+    return 0;
+}
+
+
+OUTPUT:-
+Enter the side length of the cube: 4
+Cube Volume: 64
+Enter the radius and height of the cylinder: 4 5
+Cylinder Volume: 251.327
