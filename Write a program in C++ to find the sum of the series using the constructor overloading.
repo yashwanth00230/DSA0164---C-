@@ -1,0 +1,32 @@
+#include <iostream>
+class SeriesSum {
+private:
+    int n;
+    int sum;
+public:
+    SeriesSum() : n(0), sum(0) {}
+    SeriesSum(int num) : n(num), sum(0) {
+        calculateSum();
+    }
+    void calculateSum() {
+        for (int i = 1; i <= n; ++i) {
+            sum += i;
+        }
+    }
+    void displaySum() const {
+        std::cout << "Sum of the series 1 + 2 + ... + " << n << " is: " << sum << std::endl;
+    }
+};
+int main() {
+    int n;
+    std::cout << "Enter an integer: ";
+    std::cin >> n;
+    SeriesSum seriesSum(n);
+    seriesSum.displaySum();
+    return 0;
+}
+
+
+OUTPUT:-
+Enter an integer: 4
+Sum of the series 1 + 2 + ... + 4 is: 10
