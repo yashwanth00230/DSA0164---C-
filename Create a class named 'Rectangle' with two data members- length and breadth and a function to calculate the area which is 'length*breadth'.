@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+class Rectangle {
+public:
+    Rectangle();                   
+    Rectangle(double side);          
+    Rectangle(double l, double b);   
+    double calculateArea() const;
+private:
+    double length;
+    double breadth;
+};
+Rectangle::Rectangle() : length(0), breadth(0) {
+}
+Rectangle::Rectangle(double side) : length(side), breadth(side) {
+}
+Rectangle::Rectangle(double l, double b) : length(l), breadth(b) {
+}
+double Rectangle::calculateArea() const {
+    return length * breadth;
+}
+int main() {
+    Rectangle rect1;               
+    Rectangle rect2(5);             
+    Rectangle rect3(4, 6);          
+    cout << "Area of rect1: " << rect1.calculateArea() << endl;  
+    cout << "Area of rect2: " << rect2.calculateArea() << endl;  
+    cout << "Area of rect3: " << rect3.calculateArea() << endl;  
+    return 0;
+}
+
+
+OUTPUT:-
+Area of rect1: 0
+Area of rect2: 25
+Area of rect3: 24
