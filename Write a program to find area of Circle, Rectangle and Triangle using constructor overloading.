@@ -1,0 +1,50 @@
+#include <iostream>
+#include <cmath>
+class ShapeArea {
+private:
+    double area;
+public:
+    ShapeArea() : area(0) {}
+    ShapeArea(double radius) {
+        area = M_PI * radius * radius;
+    }
+    ShapeArea(double length, double width) {
+        area = length * width;
+    }
+    ShapeArea(double base, double height, bool isTriangle) {
+        if (isTriangle) {
+            area = 0.5 * base * height;
+        }
+    }
+    void displayArea() const {
+        std::cout << "Area: " << area << std::endl;
+    }
+};
+int main() {
+    double radius, length, width, base, height;
+    std::cout << "Enter the radius of the circle: ";
+    std::cin >> radius;
+    ShapeArea circle(radius);
+    std::cout << "Circle ";
+    circle.displayArea();
+    std::cout << "Enter the length and width of the rectangle: ";
+    std::cin >> length >> width;
+    ShapeArea rectangle(length, width);
+    std::cout << "Rectangle ";
+    rectangle.displayArea();
+    std::cout << "Enter the base and height of the triangle: ";
+    std::cin >> base >> height;
+    ShapeArea triangle(base, height, true);
+    std::cout << "Triangle ";
+    triangle.displayArea();
+    return 0;
+}
+
+
+OUTPUT:-
+Enter the radius of the circle: 4
+Circle Area: 50.2655
+Enter the length and width of the rectangle: 3 4
+Rectangle Area: 12
+Enter the base and height of the triangle: 4 4
+Triangle Area: 8
