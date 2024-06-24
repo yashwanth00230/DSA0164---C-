@@ -1,0 +1,48 @@
+#include <iostream>
+using namespace std;
+class DecimalToBinary {
+public:
+    DecimalToBinary(int decimal);
+    DecimalToBinary(const string& decimalStr);
+private:
+    void convertToBinary(int decimal);
+};
+DecimalToBinary::DecimalToBinary(int decimal) {
+    cout << "Constructor called with integer: " << decimal << endl;
+    convertToBinary(decimal);
+}
+DecimalToBinary::DecimalToBinary(const string& decimalStr) {
+    int decimal = stoi(decimalStr); 
+    cout << "Constructor called with string: " << decimalStr << endl;
+    convertToBinary(decimal);
+}
+void DecimalToBinary::convertToBinary(int decimal) {
+    if (decimal == 0) {
+        cout << "Binary: 0" << endl;
+        return;
+    }
+    cout << "Binary: ";
+    for (int i = sizeof(int) * 8 - 1; i >= 0; --i) {
+        if (decimal & (1 << i)) {
+            cout << '1';
+        } else if (decimal >> i) {
+            cout << '0';
+        }
+    }
+    cout << endl;
+}
+int main() {
+    int decimalNumber;
+    cout << "Enter a decimal number: ";
+    cin >> decimalNumber;
+    DecimalToBinary bin1(decimalNumber);
+    string decimalStr = to_string(decimalNumber);
+    DecimalToBinary bin2(decimalStr);
+    return 0;
+}
+
+
+OUTPUT:-
+Enter a decimal number: 6.8
+Constructor called with integer: 6
+Binary: 110
