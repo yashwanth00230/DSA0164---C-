@@ -1,0 +1,44 @@
+#include <iostream>
+using namespace std;
+class FloydsTriangle {
+public:
+    FloydsTriangle(int rows);
+    ~FloydsTriangle();
+    void printTriangle();
+private:
+    int numRows;
+};
+FloydsTriangle::FloydsTriangle(int rows) : numRows(rows) {
+    cout << "Constructor called: Initializing Floyd's Triangle with " << numRows << " rows." << endl;
+}
+FloydsTriangle::~FloydsTriangle() {
+    cout << "Destructor called: Cleaning up Floyd's Triangle object." << endl;
+}
+void FloydsTriangle::printTriangle() {
+    int number = 1;
+    for (int i = 1; i <= numRows; ++i) {
+        for (int j = 1; j <= i; ++j) {
+            cout << number << " ";
+            ++number;
+        }
+        cout << endl;
+    }
+}
+int main() {
+    int rows;
+    cout << "Enter the number of rows for Floyd's Triangle: ";
+    cin >> rows;
+    FloydsTriangle triangle(rows);
+    triangle.printTriangle();
+    return 0;
+}
+
+
+OUTPUT:-
+Enter the number of rows for Floyd's Triangle: 5
+Constructor called: Initializing Floyd's Triangle with 5 rows.
+1 
+2 3 
+4 5 6 
+7 8 9 10 
+11 12 13 14 15 
