@@ -1,0 +1,36 @@
+#include <iostream>
+#include <string>
+class NumberReverser {
+private:
+    int number;
+    int reversedNumber;
+public:
+    NumberReverser() : number(0), reversedNumber(0) {}
+    NumberReverser(int num) : number(num), reversedNumber(0) {
+        reverseNumber();
+    }
+    void reverseNumber() {
+        int temp = number;
+        while (temp != 0) {
+            int digit = temp % 10;
+            reversedNumber = reversedNumber * 10 + digit;
+            temp /= 10;
+        }
+    }
+    void displayReverse() const {
+        std::cout << "Reverse of " << number << " is: " << reversedNumber << std::endl;
+    }
+};
+int main() {
+    int num;
+    std::cout << "Enter a number: ";
+    std::cin >> num;
+    NumberReverser reverser(num);
+    reverser.displayReverse();
+    return 0;
+}
+
+
+OUTPUT:-
+Enter a number: 12345
+Reverse of 12345 is: 54321
