@@ -1,0 +1,50 @@
+#include <iostream>
+#include <string>
+class Person {
+protected:
+    std::string name;
+    int age;
+public:
+    Person(const std::string& name, int age) : name(name), age(age) {}
+    void displayPersonInfo() const {
+        std::cout << "Name: " << name << "\nAge: " << age << std::endl;
+    }
+};
+class Employee {
+protected:
+    std::string employeeID;
+    std::string department;
+public:
+    Employee(const std::string& employeeID, const std::string& department)
+        : employeeID(employeeID), department(department) {}
+    void displayEmployeeInfo() const {
+        std::cout << "Employee ID: " << employeeID << "\nDepartment: " << department << std::endl;
+    }
+};
+class Manager : public Person, public Employee {
+private:
+    std::string position;
+public:
+    Manager(const std::string& name, int age, const std::string& employeeID, const std::string& department, const std::string& position)
+        : Person(name, age), Employee(employeeID, department), position(position) {}
+    void displayManagerInfo() const {
+        displayPersonInfo();  
+        displayEmployeeInfo();  
+        std::cout << "Position: " << position << std::endl;
+    }
+};
+int main() {
+    Manager manager("Alice", 30, "E12345", "Sales", "Sales Manager");
+    std::cout << "Manager Information:\n";
+    manager.displayManagerInfo();
+    return 0;
+}
+
+
+OUTPUT:-
+Manager Information:
+Name: Alice
+Age: 30
+Employee ID: E12345
+Department: Sales
+Position: Sales Manager
