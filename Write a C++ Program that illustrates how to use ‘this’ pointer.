@@ -1,0 +1,41 @@
+#include <iostream>
+class Rectangle {
+private:
+    double length;
+    double width;
+public:
+    Rectangle(double length, double width) {
+        this->length = length;
+        this->width = width;
+    }
+    Rectangle& setLength(double length) {
+        this->length = length; 
+        return *this; 
+    }
+    Rectangle& setWidth(double width) {
+        this->width = width; 
+        return *this; 
+    }
+    double area() const {
+        return this->length * this->width; 
+    }
+    void display() const {
+        std::cout << "Length: " << this->length << ", Width: " << this->width << std::endl;
+    }
+};
+int main() {
+    Rectangle rect(10.0, 5.0);
+    rect.display();
+    std::cout << "Initial Area: " << rect.area() << std::endl;
+    rect.setLength(20.0).setWidth(10.0);
+    rect.display();
+    std::cout << "Modified Area: " << rect.area() << std::endl;
+    return 0;
+}
+
+
+OUTPUT:-
+Length: 10, Width: 5
+Initial Area: 50
+Length: 20, Width: 10
+Modified Area: 200
