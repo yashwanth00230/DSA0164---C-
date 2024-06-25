@@ -1,0 +1,45 @@
+#include <iostream>
+class Rectangle {
+private:
+    double length;
+    double width;
+public:
+    Rectangle(double length = 0, double width = 0) : length(length), width(width) {}
+    void setDimensions(double length, double width) {
+        this->length = length;
+        this->width = width;
+    }
+    double area() const {
+        return length * width;
+    }
+    void display() const {
+        std::cout << "Length: " << length << ", Width: " << width << ", Area: " << area() << std::endl;
+    }
+};
+int main() {
+    const int numRectangles = 3;
+    Rectangle rectangles[numRectangles];
+    for (int i = 0; i < numRectangles; ++i) {
+        double length, width;
+        std::cout << "Enter the length and width for rectangle " << (i + 1) << ": ";
+        std::cin >> length >> width;
+        rectangles[i].setDimensions(length, width);
+    }
+    std::cout << "\nRectangles Information:\n";
+    for (int i = 0; i < numRectangles; ++i) {
+        std::cout << "Rectangle " << (i + 1) << ": ";
+        rectangles[i].display();
+    }
+    return 0;
+}
+
+
+OUTPUT:-
+Enter the length and width for rectangle 1: 3 4 
+Enter the length and width for rectangle 2: 3 4
+Enter the length and width for rectangle 3: 3 4
+
+Rectangles Information:
+Rectangle 1: Length: 3, Width: 4, Area: 12
+Rectangle 2: Length: 3, Width: 4, Area: 12
+Rectangle 3: Length: 3, Width: 4, Area: 12
