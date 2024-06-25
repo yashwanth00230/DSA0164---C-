@@ -1,0 +1,17 @@
+#include <iostream>
+int main() {
+    int arr[] = {10, 20, 30, 40, 50};
+    int size = sizeof(arr) / sizeof(arr[0]);
+    for (int i = 0; i < size; ++i) {
+        std::cout << "Address of arr[" << i << "] = " << &arr[i] << std::endl;
+    }
+    return 0;
+}
+
+
+OUTPUT:-
+Address of arr[0] = 0x7ffeef8d7b50
+Address of arr[1] = 0x7ffeef8d7b54
+Address of arr[2] = 0x7ffeef8d7b58
+Address of arr[3] = 0x7ffeef8d7b5c
+Address of arr[4] = 0x7ffeef8d7b60
