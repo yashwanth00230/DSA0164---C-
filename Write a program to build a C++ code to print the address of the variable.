@@ -1,0 +1,26 @@
+#include <iostream>
+#include <string>
+int main() {
+    int intVar = 42;
+    double doubleVar = 3.14;
+    std::string stringVar = "Hello, World!";
+    int* intPtr = &intVar;
+    double* doublePtr = &doubleVar;
+    std::string* stringPtr = &stringVar;
+    std::cout << "Address of intVar: " << intPtr << std::endl;
+    std::cout << "Address of doubleVar: " << doublePtr << std::endl;
+    std::cout << "Address of stringVar: " << stringPtr << std::endl;
+    std::cout << "Address of intVar using &: " << &intVar << std::endl;
+    std::cout << "Address of doubleVar using &: " << &doubleVar << std::endl;
+    std::cout << "Address of stringVar using &: " << &stringVar << std::endl;
+    return 0;
+}
+
+
+OUTPUT:-
+Address of intVar: 0x7fff4163b2c0
+Address of doubleVar: 0x7fff4163b2b8
+Address of stringVar: 0x7fff4163b290
+Address of intVar using &: 0x7fff4163b2c0
+Address of doubleVar using &: 0x7fff4163b2b8
+Address of stringVar using &: 0x7fff4163b290
