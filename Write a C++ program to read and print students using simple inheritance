@@ -1,0 +1,54 @@
+#include <iostream>
+#include <string>
+class Person {
+protected:
+    std::string name;
+    int age;
+public:
+    Person(const std::string& name, int age) : name(name), age(age) {}
+    virtual void display() const {
+        std::cout << "Name: " << name << "\nAge: " << age << std::endl;
+    }
+};
+class Student : public Person {
+private:
+    std::string studentID;
+    std::string major;
+public:
+    Student(const std::string& name, int age, const std::string& studentID, const std::string& major)
+        : Person(name, age), studentID(studentID), major(major) {}
+    void display() const override {
+        Person::display(); 
+        std::cout << "Student ID: " << studentID << "\nMajor: " << major << std::endl;
+    }
+};
+int main() {
+    std::string name, studentID, major;
+    int age;
+    std::cout << "Enter student's name: ";
+    std::getline(std::cin, name);
+    std::cout << "Enter student's age: ";
+    std::cin >> age;
+    std::cin.ignore(); 
+    std::cout << "Enter student's ID: ";
+    std::getline(std::cin, studentID);
+    std::cout << "Enter student's major: ";
+    std::getline(std::cin, major);
+    Student student(name, age, studentID, major);
+    std::cout << "\nStudent Information:\n";
+    student.display();
+    return 0;
+}
+
+
+OUTPUT:-
+Enter student's name: yashwanth
+Enter student's age: 19
+Enter student's ID: 192224132
+Enter student's major: btech
+
+Student Information:
+Name: yashwanth
+Age: 19
+Student ID: 192224132
+Major: btech
