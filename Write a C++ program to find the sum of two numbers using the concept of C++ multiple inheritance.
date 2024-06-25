@@ -1,0 +1,35 @@
+#include <iostream>
+class Number1 {
+protected:
+    int num1;
+public:
+    Number1(int n1) : num1(n1) {}
+    int getNum1() const {
+        return num1;
+    }
+};
+class Number2 {
+protected:
+    int num2;
+public:
+    Number2(int n2) : num2(n2) {}
+    int getNum2() const {
+        return num2;
+    }
+};
+class Sum : public Number1, public Number2 {
+public:
+    Sum(int n1, int n2) : Number1(n1), Number2(n2) {}
+    int getSum() const {
+        return num1 + num2;
+    }
+};
+int main() {
+    Sum sumObj(5, 10);
+    std::cout << "The sum of " << sumObj.getNum1() << " and " << sumObj.getNum2() << " is: " << sumObj.getSum() << std::endl;
+    return 0;
+}
+
+
+OUTPUT:-
+The sum of 5 and 10 is: 15
