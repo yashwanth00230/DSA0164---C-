@@ -1,0 +1,72 @@
+#include <iostream>
+#include <string>
+using namespace std;
+class Person {
+protected:
+    string name;
+    int age;
+    string gender;
+public:
+    void setPersonDetails(const string& n, int a, const string& g) {
+        name = n;
+        age = a;
+        gender = g;
+    }
+    void displayPersonDetails() const {
+        cout << "Name: " << name << endl;
+        cout << "Age: " << age << endl;
+        cout << "Gender: " << gender << endl;
+    }
+};
+class Patient : public Person {
+private:
+    int patientID;
+    string diagnosis;
+public:
+    void setPatientDetails(int id, const string& diag) {
+        patientID = id;
+        diagnosis = diag;
+    }
+    void displayPatientDetails() const {
+        cout << "Patient ID: " << patientID << endl;
+        cout << "Diagnosis: " << diagnosis << endl;
+    }
+};
+int main() {
+    Patient patient;
+    string name, gender, diagnosis;
+    int age, patientID;
+    cout << "Enter name: ";
+    getline(cin, name);
+    cout << "Enter age: ";
+    cin >> age;
+    cout << "Enter gender: ";
+    cin.ignore();
+    getline(cin, gender);
+    cout << "Enter patient ID: ";
+    cin >> patientID;
+    cout << "Enter diagnosis: ";
+    cin.ignore();
+    getline(cin, diagnosis);
+    patient.setPersonDetails(name, age, gender);
+    patient.setPatientDetails(patientID, diagnosis);
+    cout << "\nPatient Details:" << endl;
+    patient.displayPersonDetails();
+    patient.displayPatientDetails();
+    return 0;
+}
+
+
+OUTPUT:-
+Enter name: yashwanth
+Enter age: 19
+Enter gender: MALE
+Enter patient ID: 192224132
+Enter diagnosis: fever
+
+Patient Details:
+Name: yashwanth
+Age: 19
+Gender: MALE
+Patient ID: 192224132
+Diagnosis: fever
