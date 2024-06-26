@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+int main() {
+    int n;
+    cout << "Enter the number of elements: ";
+    cin >> n;
+    int* arr = new int[n];
+    cout << "Enter " << n << " elements:" << endl;
+    for (int i = 0; i < n; ++i) {
+        cout << "Element " << i + 1 << ": ";
+        cin >> *(arr + i);  
+    }
+    cout << "You entered:" << endl;
+    for (int i = 0; i < n; ++i) {
+        cout << *(arr + i) << " "; 
+    }
+    cout << endl;
+    delete[] arr;
+    return 0;
+}
+
+
+OUTPUT:-
+Enter the number of elements: 2
+Enter 2 elements:
+Element 1: 23
+Element 2: 45
+You entered:
+23 45 
