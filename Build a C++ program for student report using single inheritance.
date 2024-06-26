@@ -1,0 +1,96 @@
+#include <iostream>
+#include <string>
+using namespace std;
+class Student {
+protected:
+    int rollNumber;
+    string name;
+    int age;
+public:
+    void setStudentDetails(int roll, const string& n, int a) {
+        rollNumber = roll;
+        name = n;
+        age = a;
+    }
+    void displayStudentDetails() const {
+        cout << "Roll Number: " << rollNumber << endl;
+        cout << "Name: " << name << endl;
+        cout << "Age: " << age << endl;
+    }
+};
+class Report : public Student {
+private:
+    int marks[5];
+    double average;
+    char grade;
+public:
+    void setMarks(int m[]) {
+        int total = 0;
+        for (int i = 0; i < 5; ++i) {
+            marks[i] = m[i];
+            total += marks[i];
+        }
+        average = total / 5.0;
+        setGrade();
+    }
+    void setGrade() {
+        if (average >= 90)
+            grade = 'A';
+        else if (average >= 80)
+            grade = 'B';
+        else if (average >= 70)
+            grade = 'C';
+        else if (average >= 60)
+            grade = 'D';
+        else
+            grade = 'F';
+    }
+    void displayReport() const {
+        displayStudentDetails();
+        cout << "Marks: ";
+        for (int i = 0; i < 5; ++i) {
+            cout << marks[i] << " ";
+        }
+        cout << endl;
+        cout << "Average: " << average << endl;
+        cout << "Grade: " << grade << endl;
+    }
+};
+int main() {
+    Report studentReport;
+    int roll;
+    string name;
+    int age;
+    int marks[5];
+    cout << "Enter roll number: ";
+    cin >> roll;
+    cout << "Enter name: ";
+    cin.ignore();
+    getline(cin, name);
+    cout << "Enter age: ";
+    cin >> age;
+    cout << "Enter marks for 5 subjects: ";
+    for (int i = 0; i < 5; ++i) {
+        cin >> marks[i];
+    }
+    studentReport.setStudentDetails(roll, name, age);
+    studentReport.setMarks(marks);
+    cout << "\nStudent Report:" << endl;
+    studentReport.displayReport();
+    return 0;
+}
+
+
+OUTPUT:-
+Enter roll number: 192224132
+Enter name: yashwanth
+Enter age: 19
+Enter marks for 5 subjects: 100 100 100 100 1000
+
+Student Report:
+Roll Number: 192224132
+Name: yashwanth
+Age: 19
+Marks: 100 100 100 100 1000 
+Average: 280
+Grade: A
