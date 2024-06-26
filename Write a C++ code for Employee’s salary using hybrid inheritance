@@ -1,0 +1,102 @@
+#include <iostream>
+#include <string>
+using namespace std;
+class Person {
+protected:
+    string name;
+    int age;
+public:
+    void setPersonDetails(const string& n, int a) {
+        name = n;
+        age = a;
+    }
+    void displayPersonDetails() const {
+        cout << "Name: " << name << endl;
+        cout << "Age: " << age << endl;
+    }
+};
+class Salary {
+protected:
+    double basicSalary;
+    double allowances;
+    double deductions;
+public:
+    void setSalaryDetails(double basic, double allow, double deduc) {
+        basicSalary = basic;
+        allowances = allow;
+        deductions = deduc;
+    }
+    double calculateNetSalary() const {
+        return basicSalary + allowances - deductions;
+    }
+    void displaySalaryDetails() const {
+        cout << "Basic Salary: $" << basicSalary << endl;
+        cout << "Allowances: $" << allowances << endl;
+        cout << "Deductions: $" << deductions << endl;
+        cout << "Net Salary: $" << calculateNetSalary() << endl;
+    }
+};
+class Employee : public Person, public Salary {
+private:
+    int employeeID;
+    string designation;
+public:
+    void setEmployeeDetails(const string& n, int a, int id, const string& desig, double basic, double allow, double deduc) {
+        setPersonDetails(n, a);
+        employeeID = id;
+        designation = desig;
+        setSalaryDetails(basic, allow, deduc);
+    }
+    void displayEmployeeDetails() const {
+        displayPersonDetails();
+        cout << "Employee ID: " << employeeID << endl;
+        cout << "Designation: " << designation << endl;
+        displaySalaryDetails();
+    }
+};
+int main() {
+    Employee emp;
+    string name;
+    int age, id;
+    string designation;
+    double basicSalary, allowances, deductions;
+    cout << "Enter name: ";
+    getline(cin, name);
+    cout << "Enter age: ";
+    cin >> age;
+    cout << "Enter employee ID: ";
+    cin >> id;
+    cout << "Enter designation: ";
+    cin.ignore();
+    getline(cin, designation);
+    cout << "Enter basic salary: ";
+    cin >> basicSalary;
+    cout << "Enter allowances: ";
+    cin >> allowances;
+    cout << "Enter deductions: ";
+    cin >> deductions;
+    emp.setEmployeeDetails(name, age, id, designation, basicSalary, allowances, deductions);
+    cout << "\nEmployee Details:" << endl;
+    emp.displayEmployeeDetails();
+    return 0;
+}
+
+
+OUTPUT:-
+Enter name: yashwanth
+Enter age: 19
+Enter employee ID: 192224132
+Enter designation: 192224132
+Enter basic salary: 300000
+Enter allowances: 150000
+Enter deductions: 45000
+
+Employee Details:
+Name: yashwanth
+Age: 19
+Employee ID: 192224132
+Designation: 192224132
+Basic Salary: $300000
+Allowances: $150000
+Deductions: $45000
+Net Salary: $405000
