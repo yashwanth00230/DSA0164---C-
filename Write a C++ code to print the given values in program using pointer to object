@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std;
+class MyClass {
+public:
+    int intValue;
+    double doubleValue;
+    string stringValue;
+    MyClass(int i, double d, string s) : intValue(i), doubleValue(d), stringValue(s) {}
+    void display() {
+        cout << "Integer Value: " << intValue << endl;
+        cout << "Double Value: " << doubleValue << endl;
+        cout << "String Value: " << stringValue << endl;
+    }
+};
+int main() {
+    MyClass obj(10, 3.14, "Hello World");
+    MyClass *ptr = &obj;
+    ptr->display();
+    return 0;
+}
+
+
+OUTPUT:-
+Integer Value: 10
+Double Value: 3.14
+String Value: Hello World
