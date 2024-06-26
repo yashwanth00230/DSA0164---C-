@@ -1,0 +1,74 @@
+#include <iostream>
+using namespace std;
+class Shape {
+protected:
+    double height;
+public:
+    void setHeight(double h) {
+        height = h;
+    }
+    double getHeight() const {
+        return height;
+    }
+};
+class Rectangle : public Shape {
+protected:
+    double width;
+public:
+    void setDimensions(double w, double h) {
+        width = w;
+        setHeight(h);
+    }
+    double getWidth() const {
+        return width;
+    }
+    double calculateArea() const {
+        return width * getHeight();
+    }
+};
+class Cuboid : public Rectangle {
+private:
+    double length;
+public:
+    void setDimensions(double l, double w, double h) {
+        length = l;
+        Rectangle::setDimensions(w, h); 
+    }
+    double getLength() const {
+        return length;
+    }
+    double calculateVolume() const {
+        return length * getWidth() * getHeight();
+    }
+};
+int main() {
+    Cuboid cuboid;
+    double length, width, height;
+    cout << "Enter length of cuboid: ";
+    cin >> length;
+    cout << "Enter width of cuboid: ";
+    cin >> width;
+    cout << "Enter height of cuboid: ";
+    cin >> height;
+    cuboid.setDimensions(length, width, height);
+    cout << "\nCuboid Details:" << endl;
+    cout << "Length: " << cuboid.getLength() << endl;
+    cout << "Width: " << cuboid.getWidth() << endl;
+    cout << "Height: " << cuboid.getHeight() << endl;
+    cout << "Area: " << cuboid.calculateArea() << endl;
+    cout << "Volume: " << cuboid.calculateVolume() << endl;
+    return 0;
+}
+
+
+OUTPUT:-
+Enter length of cuboid: 7
+Enter width of cuboid: 4
+Enter height of cuboid: 6
+
+Cuboid Details:
+Length: 7
+Width: 4
+Height: 6
+Area: 24
+Volume: 168
