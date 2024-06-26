@@ -1,0 +1,40 @@
+#include <iostream>
+using namespace std;
+class Number {
+protected:
+    int start;
+    int end;
+public:
+    Number(int s, int e) : start(s), end(e) {}
+    void printNumbers(int skip) const {
+        for (int i = start; i <= end; i += skip + 1) {
+            cout << i << " ";
+        }
+        cout << endl;
+    }
+};
+class Skipper : public Number {
+public:
+    Skipper(int s, int e) : Number(s, e) {}
+};
+int main() {
+    int M, N, K;
+    cout << "Enter starting number (M): ";
+    cin >> M;
+    cout << "Enter ending number (N): ";
+    cin >> N;
+    cout << "Enter skip count (K): ";
+    cin >> K;
+    Skipper skipper(M, N);
+    cout << "Numbers from " << M << " to " << N << " skipping " << K << " numbers:" << endl;
+    skipper.printNumbers(K);
+    return 0;
+}
+
+
+OUTPUT:-
+Enter starting number (M): 1
+Enter ending number (N): 100
+Enter skip count (K): 4
+Numbers from 1 to 100 skipping 4 numbers:
+1 6 11 16 21 26 31 36 41 46 51 56 61 66 71 76 81 86 91 96 
