@@ -1,0 +1,107 @@
+#include <iostream>
+#include <string>
+using namespace std;
+class Person {
+protected:
+    string name;
+    int age;
+public:
+    void getData(const string& n, int a) {
+        name = n;
+        age = a;
+    }
+    void displayData() const {
+        cout << "Name: " << name << endl;
+        cout << "Age: " << age << endl;
+    }
+    virtual void calculateBonus() const = 0; 
+};
+class Admin : public Person {
+protected:
+    double adminBonus;
+public:
+    void getData(const string& n, int a, double b) {
+        Person::getData(n, a); 
+        adminBonus = b;
+    }
+    void displayData() const {
+        Person::displayData(); 
+        cout << "Admin Bonus: $" << adminBonus << endl;
+    }
+    void calculateBonus() const override {
+        cout << "Bonus for Admin " << name << ": $" << adminBonus << endl;
+    }
+};
+class Account : public Person {
+protected:
+    double accountBonus;
+public:
+    void getData(const string& n, int a, double b) {
+        Person::getData(n, a); 
+        accountBonus = b;
+    }
+    void displayData() const {
+        Person::displayData(); 
+        cout << "Account Bonus: $" << accountBonus << endl;
+    }
+    void calculateBonus() const override {
+        cout << "Bonus for Account " << name << ": $" << accountBonus << endl;
+    }
+};
+class Master : public Admin, public Account {
+public:
+    void getData(const string& n, int a, double b1, double b2) {
+        Admin::getData(n, a, b1); 
+        Account::getData(n, a, b2); 
+    }
+    void displayData() const {
+        Admin::displayData(); 
+        Account::displayData(); 
+    }
+    void calculateBonus() const override {
+        Admin::calculateBonus(); 
+        Account::calculateBonus(); 
+        double totalBonus = Admin::adminBonus + Account::accountBonus;
+        cout << "Total Bonus: $" << totalBonus << endl;
+    }
+};
+int main() {
+    Master employee;
+    string name;
+    int age;
+    double adminBonus, accountBonus;
+    cout << "Enter name: ";
+    getline(cin, name);
+    cout << "Enter age: ";
+    cin >> age;
+    cout << "Enter admin bonus: $";
+    cin >> adminBonus;
+    cout << "Enter account bonus: $";
+    cin >> accountBonus;
+    employee.getData(name, age, adminBonus, accountBonus);
+    cout << "\nEmployee Details:" << endl;
+    employee.displayData();
+    cout << "\nCalculating Bonus:" << endl;
+    employee.calculateBonus();
+    return 0;
+}
+
+
+OUTPUT:-
+Enter name: yashwanth
+Enter age: 19
+Enter admin bonus: $50000
+Enter account bonus: $100000
+
+Employee Details:
+Name: yashwanth
+Age: 19
+Admin Bonus: $50000
+Name: yashwanth
+Age: 19
+Account Bonus: $100000
+
+Calculating Bonus:
+Bonus for Admin yashwanth: $50000
+Bonus for Account yashwanth: $100000
+Total Bonus: $150000
