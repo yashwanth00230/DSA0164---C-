@@ -1,0 +1,51 @@
+#include <iostream>
+using namespace std;
+class ObjectCounter {
+private:
+    static int count; 
+public:
+    ObjectCounter() {
+        ++count;  
+        cout << "Object created. Current count: " << count << endl;
+    }
+    ~ObjectCounter() {
+        --count; 
+        cout << "Object destroyed. Current count: " << count << endl;
+    }
+    static int getCount() {
+        return count;
+    }
+};
+int ObjectCounter::count = 0;
+int main() {
+    cout << "Entering main block..." << endl;
+    cout << "Initial object count: " << ObjectCounter::getCount() << endl;
+    ObjectCounter obj1;
+    {
+        cout << "Entering inner block..." << endl;
+        ObjectCounter obj2, obj3;
+        cout << "Current object count: " << ObjectCounter::getCount() << endl;
+        cout << "Leaving inner block..." << endl;
+    }
+    cout << "Back in main block..." << endl;
+    cout << "Current object count: " << ObjectCounter::getCount() << endl;
+    cout << "Leaving main block..." << endl;
+    return 0;
+}
+
+
+OUTPUT:-
+Entering main block...
+Initial object count: 0
+Object created. Current count: 1
+Entering inner block...
+Object created. Current count: 2
+Object created. Current count: 3
+Current object count: 3
+Leaving inner block...
+Object destroyed. Current count: 2
+Object destroyed. Current count: 1
+Back in main block...
+Current object count: 1
+Leaving main block...
+Object destroyed. Current count: 0
