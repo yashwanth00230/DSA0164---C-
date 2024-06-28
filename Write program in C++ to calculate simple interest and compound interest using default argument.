@@ -1,0 +1,35 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+double calculateSimpleInterest(double P, double R, double T = 1) {
+    return (P * R * T) / 100;
+}
+double calculateCompoundInterest(double P, double R, double T = 1, int N = 1) {
+    return P * pow((1 + R / (N * 100)), N * T) - P;
+}
+int main() {
+    double principal, rate, time;
+    int compoundFrequency;
+    cout << "Enter principal amount: ";
+    cin >> principal;
+    cout << "Enter rate of interest: ";
+    cin >> rate;
+    cout << "Enter time period in years: ";
+    cin >> time;
+    cout << "Enter number of times interest is compounded per year (default is 1): ";
+    cin >> compoundFrequency;
+    double simpleInterest = calculateSimpleInterest(principal, rate, time);
+    cout << "Simple Interest: " << simpleInterest << endl;
+    double compoundInterest = calculateCompoundInterest(principal, rate, time, compoundFrequency);
+    cout << "Compound Interest: " << compoundInterest << endl;
+    return 0;
+}
+
+
+OUTPUT:-
+Enter principal amount: 150000
+Enter rate of interest: 2
+Enter time period in years: 2
+Enter number of times interest is compounded per year (default is 1): 12
+Simple Interest: 6000
+Compound Interest: 6116.42
